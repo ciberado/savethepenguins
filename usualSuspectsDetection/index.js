@@ -23,7 +23,8 @@ module.exports = function (context, ioTHubMessages) {
         const moduleName = 'FaceAPIServerModule';
         const methodName = 'SetVisualAlarmState';
         
-        const endPoint = process.env.iottelemetry_events_IOTHUB;
+        const endPointVarName = Object.keys(process.env).filter(k => k.endsWith('events_IOTHUB'))[0];
+        const endPoint = process.env[endPointVarName];
         const sharedAccessKeyName = endPoint.match(/SharedAccessKeyName=(.*?);/)[1];
         const sharedAccessKeyValue = endPoint.match(/SharedAccessKey=(.*?);/)[1];
         const hostname = endPoint.match(/EntityPath=(.*)?/)[1];
