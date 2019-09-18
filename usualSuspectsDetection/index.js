@@ -8,8 +8,18 @@ const database = {
 };
 
 module.exports = function (context, ioTHubMessages) {
-    context.log(`JavaScript eventhub trigger function called for message array: ${JSON.stringify(ioTHubMessages)}.`);
+    //context.log(`JavaScript eventhub trigger function called for message array: ${JSON.stringify(ioTHubMessages)}.`);
     
+    if (ioTHubMessages.length > 0) {
+        const msgTimestamp = ioTHubMessages[0].timestamp;
+        const now = new Date().getTime();
+        if (now - msgTimestamp > 1000*60*10) {
+            context.log('Skipping messages older than ten minutes.');
+            context.done();
+            return;
+        }
+    }
+
     function invokeSetVisualAlarmState(usualSuspects) {
         const deviceId = process.env.DEVICE_NAME ? process.env.DEVICE_NAME : 'drone1';
         const moduleName = 'FaceAPIServerModule';
@@ -64,5 +74,9 @@ module.exports = function (context, ioTHubMessages) {
         })
         context.log(`Processed message: ${JSON.stringify(message)}`);
     });
-    invokeSetVisualAlarmState(usualSuspects);
+    if (usualSuspects.length > 0) {
+        invokeSetVisualAlarmState(usualSuspects);
+    } else {
+        context.done();
+    }
 };
