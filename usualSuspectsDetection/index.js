@@ -8,6 +8,8 @@ const database = {
 };
 
 module.exports = function (context, ioTHubMessages) {
+
+
     if (ioTHubMessages.length > 0) {
         const msgTimestamp = ioTHubMessages[0].timestamp;
         const now = new Date().getTime();
@@ -23,14 +25,13 @@ module.exports = function (context, ioTHubMessages) {
         const moduleName = 'FaceAPIServerModule';
         const methodName = 'SetVisualAlarmState';
         
-        if (!process.env.IOTHUB_CONNECTION_STRING) {
-            context.log(`Impossible to send DM: no IOTHUB_CONNECTION_STRING variable provided.`);
-            context.done();
-            return;
-        }
-        context.log(`Connecting to IotHub.`);
-        const connectionString = process.env.IOTHUB_CONNECTION_STRING;
-        // const connectionString = 'HostName=policehub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=<key>';
+        const endPoint = process.env.EventHub;
+        const sharedAccessKeyName = endPoint.match(/SharedAccessKeyName=(.*?);/)[1];
+        const sharedAccessKeyValue = endPoint.match(/SharedAccessKey=(.*?);/)[1];
+        const hostname = endPoint.match(/EntityPath=(.*)?/)[1];
+
+        const connectionString = `HostName=${hostname}.azure-devices.net;SharedAccessKeyName=${sharedAccessKeyName};SharedAccessKey=${sharedAccessKeyValue}`;
+        context.log(`Connecting to IotHub ${hostname}.`);
 
         const client = Client.fromConnectionString(connectionString);
         context.log(`Connection stablished.`);
