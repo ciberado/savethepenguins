@@ -8,8 +8,6 @@ const database = {
 };
 
 module.exports = function (context, ioTHubMessages) {
-    //context.log(`JavaScript eventhub trigger function called for message array: ${JSON.stringify(ioTHubMessages)}.`);
-    
     if (ioTHubMessages.length > 0) {
         const msgTimestamp = ioTHubMessages[0].timestamp;
         const now = new Date().getTime();
@@ -25,6 +23,11 @@ module.exports = function (context, ioTHubMessages) {
         const moduleName = 'FaceAPIServerModule';
         const methodName = 'SetVisualAlarmState';
         
+        if (!process.env.IOTHUB_CONNECTION_STRING) {
+            context.log(`Impossible to send DM: no IOTHUB_CONNECTION_STRING variable provided.`);
+            context.done();
+            return;
+        }
         context.log(`Connecting to IotHub.`);
         const connectionString = process.env.IOTHUB_CONNECTION_STRING;
         // const connectionString = 'HostName=policehub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=<key>';
@@ -72,9 +75,9 @@ module.exports = function (context, ioTHubMessages) {
                 }
             }
         })
-        context.log(`Processed message: ${JSON.stringify(message)}`);
     });
-    if (usualSuspects.length > 0) {
+    console.log(`Suspects: ${JSON.stringify(usualSuspects)}`);
+    if (usualSuspects.dangerous.length > 0) {
         invokeSetVisualAlarmState(usualSuspects);
     } else {
         context.done();

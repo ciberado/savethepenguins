@@ -1,0 +1,122 @@
+ {
+ 	"invocationId": "c4c99e83-770a-4057-9664-03b3e465e386",
+ 	"executionContext": {
+ 		"invocationId": "c4c99e83-770a-4057-9664-03b3e465e386",
+ 		"functionName": "usualSuspectsDetection",
+ 		"functionDirectory": "C:\\tmp\\savethepenguin\\usualSuspectsDetection"
+ 	},
+ 	"bindings": {
+ 		"IoTHubMessages": [{
+ 			"matches": [{
+ 				"_label": "Javi",
+ 				"_distance": "0.4683736105867204"
+ 			}],
+ 			"timestamp": 1568802935216
+ 		}, {
+ 			"matches": [{
+ 				"_label": "Javi",
+ 				"_distance": "0.4565068037973451"
+ 			}],
+ 			"timestamp": 1568802935273
+ 		}, {
+ 			"matches": [{
+ 				"_label": "Javi",
+ 				"_distance": "0.45587517158108304"
+ 			}],
+ 			"timestamp": 1568802935393
+ 		}]
+ 	},
+ 	"bindingData": {
+ 		"invocationId": "c4c99e83-770a-4057-9664-03b3e465e386",
+ 		"partitionContext": {
+ 			"cancellationToken": {
+ 				"isCancellationRequested": false,
+ 				"canBeCanceled": true,
+ 				"waitHandle": {
+ 					"handle": {
+ 						"value": 2936
+ 					},
+ 					"safeWaitHandle": {
+ 						"isInvalid": false,
+ 						"isClosed": false
+ 					}
+ 				}
+ 			},
+ 			"consumerGroupName": "$Default",
+ 			"eventHubPath": "iottelemetry",
+ 			"partitionId": "1",
+ 			"owner": "59b35709-bcfe-4d41-9bda-97e61a567e91",
+ 			"runtimeInformation": {
+ 				"partitionId": "1",
+ 				"lastSequenceNumber": 0,
+ 				"lastEnqueuedTimeUtc": "0001-01-01T00:00:00",
+ 				"lastEnqueuedOffset": null,
+ 				"retrievalTime": "0001-01-01T00:00:00"
+ 			}
+ 		},
+ 		"partitionKeyArray": [null, null, null],
+ 		"offsetArray": ["0", "528", "1056"],
+ 		"sequenceNumberArray": [0, 1, 2],
+ 		"enqueuedTimeUtcArray": ["2019-09-18T10:35:37.136Z", "2019-09-18T10:35:37.136Z", "2019-09-18T10:35:37.136Z"],
+ 		"propertiesArray": [{
+ 			"MessageType": "face-match"
+ 		}, {
+ 			"MessageType": "face-match"
+ 		}, {
+ 			"MessageType": "face-match"
+ 		}],
+ 		"systemPropertiesArray": [{
+ 			"iothub-connection-device-id": "drone1",
+ 			"iothub-connection-module-id": "FaceAPIServerModule",
+ 			"iothub-connection-auth-method": "{\"scope\":\"module\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+ 			"iothub-connection-auth-generation-id": "637043955794444292",
+ 			"iothub-enqueuedtime": "2019-09-18T10:35:35.516Z",
+ 			"iothub-message-source": "Telemetry",
+ 			"x-opt-sequence-number": 0,
+ 			"x-opt-offset": "0",
+ 			"x-opt-enqueued-time": "2019-09-18T10:35:37.136Z",
+ 			"SequenceNumber": 0,
+ 			"Offset": "0",
+ 			"PartitionKey": null,
+ 			"EnqueuedTimeUtc": "2019-09-18T10:35:37.136Z"
+ 		}, {
+ 			"iothub-connection-device-id": "drone1",
+ 			"iothub-connection-module-id": "FaceAPIServerModule",
+ 			"iothub-connection-auth-method": "{\"scope\":\"module\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+ 			"iothub-connection-auth-generation-id": "637043955794444292",
+ 			"iothub-enqueuedtime": "2019-09-18T10:35:35.516Z",
+ 			"iothub-message-source": "Telemetry",
+ 			"x-opt-sequence-number": 1,
+ 			"x-opt-offset": "528",
+ 			"x-opt-enqueued-time": "2019-09-18T10:35:37.136Z",
+ 			"SequenceNumber": 1,
+ 			"Offset": "528",
+ 			"PartitionKey": null,
+ 			"EnqueuedTimeUtc": "2019-09-18T10:35:37.136Z"
+ 		}, {
+ 			"iothub-connection-device-id": "drone1",
+ 			"iothub-connection-module-id": "FaceAPIServerModule",
+ 			"iothub-connection-auth-method": "{\"scope\":\"module\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+ 			"iothub-connection-auth-generation-id": "637043955794444292",
+ 			"iothub-enqueuedtime": "2019-09-18T10:35:35.516Z",
+ 			"iothub-message-source": "Telemetry",
+ 			"x-opt-sequence-number": 2,
+ 			"x-opt-offset": "1056",
+ 			"x-opt-enqueued-time": "2019-09-18T10:35:37.136Z",
+ 			"SequenceNumber": 2,
+ 			"Offset": "1056",
+ 			"PartitionKey": null,
+ 			"EnqueuedTimeUtc": "2019-09-18T10:35:37.136Z"
+ 		}],
+ 		"sys": {
+ 			"methodName": "usualSuspectsDetection",
+ 			"utcNow": "2019-09-18T14:26:54.5973797Z",
+ 			"randGuid": "e2e3a0cd-5182-41df-aae9-d2d78720273f"
+ 		}
+ 	},
+ 	"bindingDefinitions": [{
+ 		"name": "IoTHubMessages",
+ 		"type": "eventHubTrigger",
+ 		"direction": "in"
+ 	}]
+ }
