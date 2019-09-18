@@ -5,7 +5,7 @@
       "name": "IoTHubMessages",
       "direction": "in",
       "eventHubName": "iottelemetry",
-      "connection": "EventHub",
+      "connection": "iottelemetry_events_IOTHUB",
       "cardinality": "many",
       "consumerGroup": "$Default"
     }

@@ -8,8 +8,6 @@ const database = {
 };
 
 module.exports = function (context, ioTHubMessages) {
-
-
     if (ioTHubMessages.length > 0) {
         const msgTimestamp = ioTHubMessages[0].timestamp;
         const now = new Date().getTime();
@@ -25,7 +23,7 @@ module.exports = function (context, ioTHubMessages) {
         const moduleName = 'FaceAPIServerModule';
         const methodName = 'SetVisualAlarmState';
         
-        const endPoint = process.env.EventHub;
+        const endPoint = process.env.iottelemetry_events_IOTHUB;
         const sharedAccessKeyName = endPoint.match(/SharedAccessKeyName=(.*?);/)[1];
         const sharedAccessKeyValue = endPoint.match(/SharedAccessKey=(.*?);/)[1];
         const hostname = endPoint.match(/EntityPath=(.*)?/)[1];
